@@ -38,7 +38,7 @@ public class Grid {
 
 
     public void revealGrid() {
-        System.out.print("  "); // Starting padding for column headers (if needed)
+        System.out.print("  ");
         for (int i = 0; i < grid.length; i++) {
             System.out.print(i + " ");
         }
@@ -100,6 +100,7 @@ public class Grid {
             }
         }
     }
+
 
     public ArrayList<String> getBombsAround(int row, int col) {
         ArrayList<String> output = new ArrayList<String>();

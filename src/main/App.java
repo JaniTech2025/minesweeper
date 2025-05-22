@@ -52,7 +52,7 @@ public class App {
                 else {
                     System.out.println("Hint: ;)");
                     ArrayList <String> result = mineGrid.getBombsAround(row, col);
-                    if (result.isEmpty()) System.out.println("No numbers showing, stay warned around this cell!");
+                    if (result.isEmpty()) System.out.println("No numbers showing? stay warned/all revealed around this cell!");
                     for (String s : result) {
                         System.out.println(s);
                     }
