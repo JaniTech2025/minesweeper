@@ -2,6 +2,10 @@ package util;
 
 import java.util.ArrayList;
 
+import static util.MyUtils.isInBounds;
+
+//import static util.MyUtils.cascadeBlanksAround;
+
 public class Grid {
     private Cell[][] grid;
 
@@ -17,6 +21,7 @@ public class Grid {
 //                System.out.print(j + " ");
 
                 grid[i][j] = new Blank();
+
             }
         }
 
@@ -76,7 +81,7 @@ public class Grid {
         for (int i = 0; i < numRows; i++) {
             for (int j = 0; j < numCols; j++) {
                 if (grid[i][j] instanceof Bomb) {
-                    updateNeighbors(i, j);
+                    MyUtils.updateNeighbors(grid, i, j);
                 }
             }
         }
@@ -84,47 +89,16 @@ public class Grid {
 
 
 
-    private void updateNeighbors(int row, int col) {
-        for (int i = row - 1; i <= row + 1; i++) {
-            for (int j = col - 1; j <= col + 1; j++) {
-                if (i == row && j == col) continue; // current cell around which numbers are to be placed
-                if (isInBounds(i, j)) {
-                    if (grid[i][j] instanceof Blank) {
-                        grid[i][j] = new Number(1);
-                    } else if (grid[i][j] instanceof Number numberCell) {
-                        int newCount = numberCell.getBombCount() + 1;
-                        grid[i][j] = new Number(newCount);
-                    }
-
-                }
-            }
-        }
-    }
 
 
-    public ArrayList<String> getBombsAround(int row, int col) {
-        ArrayList<String> output = new ArrayList<String>();
-        for (int i = row - 1; i <= row + 1; i++) {
-            for (int j = col - 1; j <= col + 1; j++) {
-                if (i == row && j == col) continue; // current cell around which numbers are to be placed
-                if (isInBounds(i, j)) {
-                    if ((grid[i][j] instanceof Number numberCell) && (grid[i][j].isRevealed(i, j))){
-                        int count = numberCell.getBombCount();
-                        output.add(String.format("[%d, %d]: %d", i, j, count));
-                    }
-//                    else{
-//                        output.add(String.format("[%d, %d]: 1", i, j));
-//                    }
-//
-                }
-            }
-        }
-        return output;
-    }
 
-    private boolean isInBounds(int row, int col) {
-        return row >= 0 && row < grid.length && col >= 0 && col < grid[0].length;
-    }
+
+
+
+
+
+
+
 
 
 }
