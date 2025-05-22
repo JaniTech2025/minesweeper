@@ -1,7 +1,7 @@
 package util;
 
 public class Number extends Cell {
-    private int bombCount;
+    private final int bombCount;
 
     public Number(int count) {
         this.bombCount = count;

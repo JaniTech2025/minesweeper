@@ -8,7 +8,10 @@ public class Bomb extends Cell {
     @Override
     public void reveal(int row, int col) {
         super.reveal(row, col);
-        System.out.println("Game Over!");
-        System.exit(0);
+//        System.out.println("*****************");
+//        System.out.println("Boom. Game Over!");
+//        System.out.println("*****************");
+//
+//        System.exit(0);
     }
 }

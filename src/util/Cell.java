@@ -12,7 +12,7 @@ public abstract class Cell {
         displaySymbol = actualSymbol;
     }
 
-    public boolean isRevealed() {
-        return !displaySymbol.equals("?");
+    public boolean isRevealed(int row, int col) {
+        return displaySymbol.equals("?");
     }
 }

@@ -6,6 +6,13 @@ import java.util.Set;
 
 public class MyUtils {
 
+    private static Cell[][] grid;
+
+    public MyUtils(Cell[][] grid) {
+        MyUtils.grid = grid;
+    }
+
+
     public static int[][] generateRandomPositions(int numRows, int numCols) {
         double percentage = 0.2;
         int totalCells = numRows * numCols;
@@ -31,5 +38,27 @@ public class MyUtils {
 
         return result;
     }
+
+
+    //Check for win or continue
+    public static boolean gameWin(Cell[][] grid) {
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
+                Cell cell = grid[i][j];
+                if((cell instanceof Number || cell instanceof Blank) && (cell.isRevealed(i, j))){
+                   return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public static boolean bombUncovered(Cell[][] grid, int row, int col){
+        Cell cell = grid[row][col];
+        return cell instanceof Bomb;
+    }
+
+
+
 
 }
